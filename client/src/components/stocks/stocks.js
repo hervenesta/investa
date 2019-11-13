@@ -10,7 +10,7 @@ class Stocks extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/stocks/AAPL')
+        fetch('/nyse/AAPL')
         .then(res => res.json())
         .then(stocks => this.setState({stocks:stocks.prices}, ()=> console.log('stocks fetched...', stocks.prices)));
     }
