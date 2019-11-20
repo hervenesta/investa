@@ -15,7 +15,6 @@ import Nyse from './pages/Nyse';
 class App extends React.Component {
   render() {
     return (
-
         <div>
           <Router>
             <Route path="/" component={Welcome}/>
