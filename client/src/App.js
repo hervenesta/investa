@@ -10,6 +10,7 @@ import Charts from './pages/Chart';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Welcome from './pages/Welcome';
+import BuySellForm from './components/BuySellForm';
 
 class App extends React.Component {
   render() {
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Route exact path="/stocks/AAPL" component={Stocks} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/home" component={BuySellForm} />
         </Router>
         </div>
     );
