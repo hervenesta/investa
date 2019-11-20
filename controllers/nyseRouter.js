@@ -1,11 +1,12 @@
 const express = require('express');
 let router = express.Router();
 
-var request = require("request");
-
+// import the symbol.json file
 const symbols = require('./symbols.json');
 
-router.get('/', (req, res, next) => {
+var request = require("request");
+
+router.get('/', (req, res) => {
     res.send(symbols);
 })
 

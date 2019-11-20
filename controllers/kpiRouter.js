@@ -19,14 +19,18 @@ router.get('/:id', (req, res) => {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
+        // convert json object to javascript array in order to read each object
+        // using the dot notation in React
         var json = body;
         var obj = JSON.parse(json);
         var summary = obj.summaryProfile;
         var financialData = obj.financialData;
+        var quoteType = obj.quoteType;
         res.send({
             summary: summary,
-            financialInfo: financialData
-        });
+            financialInfo: financialData,
+            quoteType: quoteType
+        }); 
     });
 })
 

@@ -23,7 +23,7 @@ class App extends React.Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/news" component={News} />
-            <Route exact path="/chart/GOOGL" component={Charts} />
+            <Route path="/chart" component={Charts} />
             <Route exact path="/nyse" component={Nyse} />
             <Route exact path="/nyse/AAPL" component={Stocks} />
             <Route exact path="/login" component={Login} />
