@@ -1,21 +1,86 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
+import axios from 'axios';
 
-function Signup(){
+class Signup extends Component {
+
+  state = {
+    username:"",
+    password:""
+  };
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const { username, password } = this.state;
+
+    const credentials = {
+      username,
+      password
+    };
+
+      axios
+        .post('http://localhost:8080/registration', credentials)
+        .then(() => console.log('credentials Created'))
+        .catch(err => {
+          console.error(err);
+      }); 
+  };
+
+  render(){
     return(
-        /*<form className="container">
-            <h1>New User? Sign up right here!</h1>
-        <label for="uname"><b>Username: </b></label>
-        <input type="text" placeholder="Enter Username" name="username" required/>
+      <div>
         <br />
-        <label for="psw"><b>Password: </b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required/>
-        <br />
-        <label for="psw"><b>Reenter Password: </b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required/>
-        <br />
-        <button type="submit"> Sign Me Up! </button>
-      </form> */
-
+        <div className="container">
+          <form onSubmit={this.handleSubmit}>
+            <div style={{ width: '50%' }} className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="username"
+                placeholder="username"
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <br />
+            <div style={{ width: '50%' }} className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="password"
+                placeholder="password"
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <br />
+            <div style={{ width: '30%' }} className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="re-enter password"
+                placeholder="re-enter password"
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <br />
+            <div style={{ width: '30%' }}>
+              <button className="btn btn-success" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+          <div>
+            <NavLink className="nav-link active" to="login">Login</NavLink>
+          </div>
+        </div>
+      </div>
+/*
       <form className="border border-warning ">
         <h1 className=" text-center my-2">New User? Sign up right here!</h1>
       <div class="form-group  text-center justify-content-center my-4 border border-warning "   >
@@ -40,8 +105,9 @@ function Signup(){
        <button type="submit" class="btn btn-light btn-outline-info" >Sign Me Up!</button>
       </div>
      </form>
-       
+       */
     )
+  }
 }
 
 export default Signup;

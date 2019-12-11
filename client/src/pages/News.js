@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import Loading from '../components/Loading';
 
 class News extends Component{
     
     state = {
         kpi: [],
+        loading: true
     }
 
     componentDidMount(){
@@ -13,17 +15,15 @@ class News extends Component{
      getKpi = async () => {
         await fetch('/nyse/kpi/TSLA')
             .then(response => response.json())
-            .then(kpi => this.setState({kpi}, () => console.log(kpi)))
+            .then(kpi => this.setState({kpi, loading: false,}, () => console.log(kpi)))
             .catch(e => e)
     }
     
     render(){
-        
-        if (this.state.kpi === undefined || this.state.kpi.summary === undefined ) {
-            return(<div> 
-               <h5>Please wait...</h5>
-            </div>);
-        }
+        if(this.state.loading) {
+            return <Loading />;
+          }
+
         const s = this.state.kpi;
         console.log('S:', typeof(s), s);
         return(

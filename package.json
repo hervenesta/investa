@@ -9,8 +9,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
     "express-router": "0.0.1",
-    "request": "^2.88.0"
+    "express-session": "^1.17.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^7.13.0",
+    "pg-hstore": "^2.3.3",
+    "request": "^2.88.0",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1"
   }
 }

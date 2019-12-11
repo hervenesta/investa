@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 
-class Login extends Component {
+class OrderForm extends Component {
 
-  state = {
-    username:"",
-    password:""
-  };
+    state = {
+      symbol: '',
+      price: 1.0,
+      numberOfShares: 0,
+      position:''
+    }
 
   handleInputChange = e => {
     this.setState({
@@ -18,23 +20,25 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { symbol, price, numberOfShares, position } = this.state;
 
-    const credentials = {
-      username,
-      password
+    const order = {
+      symbol,
+      price,
+      numberOfShares,
+      position
     };
 
       axios
-        .post('http://localhost:8080/login', credentials)
-        .then(() => console.log('credentials Created'))
+        .post('http://localhost:8080/order', order)
+        .then(() => console.log('Order Created'))
         .catch(err => {
           console.error(err);
       }); 
   };
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
         <br />
         <div className="container">
@@ -43,8 +47,8 @@ class Login extends Component {
               <input
                 type="text"
                 className="form-control"
-                name="username"
-                placeholder="username"
+                name="position"
+                placeholder="buy or sell"
                 onChange={this.handleInputChange}
               />
             </div>
@@ -53,15 +57,35 @@ class Login extends Component {
               <input
                 type="text"
                 className="form-control"
-                name="password"
-                placeholder="password"
+                name="symbol"
+                placeholder="symbol"
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <br />
+            <div style={{ width: '30%' }} className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="price"
+                placeholder="price"
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <br />
+            <div style={{ width: '30%' }} className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="numberOfShares"
+                placeholder="number of shares"
                 onChange={this.handleInputChange}
               />
             </div>
             <br />
             <div style={{ width: '30%' }}>
               <button className="btn btn-success" type="submit">
-                Login
+                Place Order
               </button>
             </div>
           </form>
@@ -70,8 +94,8 @@ class Login extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Login;
+export default OrderForm;

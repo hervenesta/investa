@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 
 function ChartHeader(props){
     return(
@@ -9,7 +8,7 @@ function ChartHeader(props){
         </div>
     
         <div className="subheader-body">
-          <span className="subheader"> Powered by <a className="link" target="_blank" href="https://www.nyse.com/index">NYSE</a>. </span>
+          <span className="subheader"> Powered by <a className="link" href="https://www.nyse.com/index">NYSE</a> </span>
         </div>
       </header>
     )

@@ -1,10 +1,18 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+'use strict';
+const {Model} = require('sequelize');
 
-const TransactionType = db.define('transactiontype', {
-    position: {
-        type: Sequelize.STRING
-    }
-})
+module.exports = (sequelize, DataTypes) => {
+  class TransactionType extends Model {}
 
-module.exports = TransactionType;
+  TransactionType.init({
+    position: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'transactiontype'
+  });
+  TransactionType.associate = function(models) {
+    // associations can be defined here
+    TransactionType.hasMany(models.Transaction);
+  };
+  return TransactionType;
+};

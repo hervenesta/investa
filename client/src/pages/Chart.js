@@ -96,7 +96,7 @@ class Charts extends Component{
                 <ChartHeader title="NYSE Stock Index"/>
                 <div>
                     <form onClick={this.onSymbolClick}>
-                        <input type="text" value={this.state.Symbol} onChange={ this.onSymbolChange } />
+                        <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={ this.onSymbolChange } />
                         <input type="submit" value="submit" />
                     </form>
        

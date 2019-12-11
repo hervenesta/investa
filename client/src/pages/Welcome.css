@@ -8,6 +8,8 @@
   }
   
   .App-header {
+    background-image: url('nyse.jpg');
+    background-position: center;
     background-color: #282c34;
     height: 200px;
     display: flex;
