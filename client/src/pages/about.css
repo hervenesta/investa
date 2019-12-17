@@ -1,5 +1,27 @@
+#team{
+  font-size: 80px;
+  font-family: 'PIXymbolsBabyBlocksW00-Reg', sans-serif;
+  color: rgba(146,155, 8, 1);
+  background-color:#292c33;
+}
+​
+#teamP{
+  background-color:#292c33;
+}
+​
+.color1{
+  font-family: 'Sawarabi Mincho', sans-serif;
+  color: rgba(146,155, 8, 1);
+}
+​
+.names{
+  font-family: 'Orbitron', sans-serif;
+}
 
-.card{
-  width: 25%;
-  float: none;
+.h1,h2,h3,h4{
+  color: black;
+}
+
+#bla{
+  color:black;
 }

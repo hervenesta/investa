@@ -46,9 +46,7 @@ class Nyse extends Component {
                 )}
                 </div>
             </div>
-            )
-           
-        
+        )  
     }
 }
 

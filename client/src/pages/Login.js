@@ -36,38 +36,22 @@ class Login extends Component {
   render(){
     return(
       <div>
-        <br />
-        <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <div style={{ width: '50%' }} className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                placeholder="username"
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <br />
-            <div style={{ width: '50%' }} className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                name="password"
-                placeholder="password"
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <br />
-            <div style={{ width: '30%' }}>
-              <button className="btn btn-success" type="submit">
-                Login
-              </button>
-            </div>
-          </form>
-          <div>
-            <NavLink className="nav-link active" to="login">Login</NavLink>
-          </div>
+        <div className = " my-2">
+            <form className="d-flex justify-content-center">
+              <div className="form  text-center  my-4 " >
+                <div >
+                  <label class="mr-sm-2 h2" for="uname"> Username </label><br/>
+                  <input type="text" class="form-controll" id="uname" placeholder="Enter Username"></input>
+                </div>
+                <br/>
+                <div >
+                  <label class="mr-sm-2 h2" for="psw"> Password </label><br/>
+                  <input type="text" class="form-controll" id="psw" placeholder="Password"></input>
+                </div>
+                <button type="submit" class="btn btn-dark px-2 ">Take Me In</button>
+                <NavLink className="nav-link active" to="signup">Sign up</NavLink>
+              </div>
+            </form>
         </div>
       </div>
     )

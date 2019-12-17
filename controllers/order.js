@@ -33,7 +33,7 @@ router.use(
       },
       headers: {
         'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-        'x-rapidapi-key': '93b26d98c8msh56f6f024aa8de21p18ec5ejsn2e4cb3c87943'
+        'x-rapidapi-key': 'ce9b90c58fmsh5b71f37b9a6a50ep172728jsn54c6923e6e85'
       }
     };
 
@@ -45,16 +45,18 @@ router.use(
       currentPrice = (p.close).toString();
       currentPrice = Number(currentPrice);
 
+      let userid = 5;
+      
       if(position === "buy"){
         Transaction.create({
           symbol,
-          userId:4,
+          userId:userid,
           position,
           price, 
           numberOfShares,
           total:price*numberOfShares 
         }).then((t) => {
-          User.findByPk(4).then(user => {
+          User.findByPk(userid).then(user => {
             return (
               user.decrement({balance:t.dataValues.total}),
               user.increment({totalNumberOfShares:numberOfShares})
@@ -65,16 +67,15 @@ router.use(
           .catch(e => console.log(e));
 
       } else {
-          if(price < currentPrice){
             Transaction.create({
               symbol,
-              userId:4,
+              userId:userid,
               position,
-              price, 
+              price:currentPrice, 
               numberOfShares,
               total:currentPrice*numberOfShares
             }).then((t) => {
-              User.findByPk(4).then(user => {
+              User.findByPk(userid).then(user => {
                 return (
                   user.increment({balance:t.dataValues.total}),
                   user.decrement({totalNumberOfShares:numberOfShares})
@@ -83,8 +84,8 @@ router.use(
               console.log(t.dataValues)
             })
               .catch(e => console.log(e));
-          }
-      } 
+          
+        } 
     });
 
    res.json({

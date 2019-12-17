@@ -3,6 +3,10 @@ import _ from 'lodash';
 import { Line } from 'react-chartjs-2';
 //import {NavLink} from 'react-router-dom';
 import ChartHeader from './ChartHeader';
+import './chart.css';
+import moment from 'moment';
+//import Loading from '../components/Loading';
+
 //import moment from 'moment';
 //import symbols from './symbols.json';
 
@@ -50,12 +54,12 @@ class Charts extends Component{
 
     formatChartData(){
         console.log("graph running...");
-        const stocks = this.state.historicalData
-        const stockdate = stocks.timestamp
+        const stocks = this.state.historicalData;
+        const stockdate = stocks.timestamp;
+        
         return(
             {
-                labels: _.map(_.keys(stockdate), stockdate => Intl.DateTimeFormat('en-US',{year: "numeric",month: "short",day: "2-digit"                          
-                  }).format(stockdate.date) ),
+                labels: _.map(_.keys(stockdate), stockdate => moment(stockdate.date).format("ll") ),
                 datasets: [
                     {
                         label: "Stocks",
@@ -86,24 +90,29 @@ class Charts extends Component{
 
     render(){
         console.log('render is running...');
-        if(this.state.Symbol === undefined){
+       /* if(this.state.Symbol === undefined){
             return(
                 <div>Please Wait...</div>
             )
-        }
+        }*/
+        if (this.state.historicalData) {
         return(
-            <div >
+            <div  >
                 <ChartHeader title="NYSE Stock Index"/>
-                <div>
+                <div className="subheader">
                     <form onClick={this.onSymbolClick}>
                         <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={ this.onSymbolChange } />
                         <input type="submit" value="submit" />
                     </form>
        
                 </div>
-                <div>
-                    <div className="row">
-                        <div className="col s6">
+                <div className="container-chart">
+                    <div className="row-chart">
+                        <div className="graph-title">
+                            <h6>{this.state.Symbol} graph over the last 30 days</h6>
+                        </div>
+                        <div className="col-chart">
+                            
                             <Line data={this.formatChartData()} height={50} />
                         </div>
                     </div>
@@ -112,6 +121,8 @@ class Charts extends Component{
             </div>
             
         );
+        }
+        return null;
     }
     
 }

@@ -17,7 +17,7 @@ router.use(
 
 
   router.use(bodyParser.json());
-
+/*
   router.post('/', (req, res) => {
     let { username, password} = req.body;
     User.create({
@@ -27,7 +27,7 @@ router.use(
       res.json({message: 'User inserted'})
     })
   })
-/*
+*/
   router.post('/', async (req, res) => {
     let { username, password} = req.body;
     try {
@@ -35,12 +35,14 @@ router.use(
       User.create({
         username,
         password: hashedPaasword
+      }).then(() => {
+        res.json({message: 'User inserted'})
       })
-      res.redirect('/login');
+      
     } catch {
       res.redirect('/signup');
     }
-  })*/
+  })
   
 
 module.exports = router; 

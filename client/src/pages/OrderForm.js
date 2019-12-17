@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
+import './orderform.css';
 
 class OrderForm extends Component {
 
     state = {
-      symbol: '',
+      symbol: " ",
       price: 1.0,
       numberOfShares: 0,
       position:''
@@ -40,58 +41,62 @@ class OrderForm extends Component {
   render() {
     return (
       <div>
-        <br />
-        <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <div style={{ width: '50%' }} className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                name="position"
-                placeholder="buy or sell"
-                onChange={this.handleInputChange}
-              />
+        <div >
+          <form className="order-form" onSubmit={this.handleSubmit}>
+            <div  >
+              <div>
+                <label class="mr-sm-2 h2" > Position: 
+                <input
+                  type="text"
+                  className="form-control"
+                  name="position"
+                  placeholder="buy or sell"
+                  onChange={this.handleInputChange}
+                /> </label>
+              </div>
             </div>
-            <br />
-            <div style={{ width: '50%' }} className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                name="symbol"
-                placeholder="symbol"
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <br />
-            <div style={{ width: '30%' }} className="form-group">
+            <br/>
+              <div >
+                <label class="mr-sm-2 h2" for="uname"> Symbol: 
+                <input
+                  type="text"
+                  className="form-control"
+                  name="symbol"
+                  placeholder="symbol"
+                  onChange={this.handleInputChange}
+                /> </label>
+              </div>
+            <br/>
+            <div >
+              <label class="mr-sm-2 h2" > Price:
               <input
                 type="text"
                 className="form-control"
                 name="price"
                 placeholder="price"
                 onChange={this.handleInputChange}
-              />
+              /> </label>
+              
             </div>
             <br />
-            <div style={{ width: '30%' }} className="form-group">
+            <div >
+              <label class="mr-sm-2 h2" > Number Of Shares:
               <input
                 type="text"
                 className="form-control"
                 name="numberOfShares"
                 placeholder="number of shares"
                 onChange={this.handleInputChange}
-              />
+              /> </label>
             </div>
             <br />
-            <div style={{ width: '30%' }}>
+            <div >
               <button className="btn btn-success" type="submit">
                 Place Order
               </button>
+              <NavLink className="nav-link active" to="login">Login</NavLink>
             </div>
           </form>
-          <div>
-            <NavLink className="nav-link active" to="login">Login</NavLink>
-          </div>
         </div>
       </div>
     );

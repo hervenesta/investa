@@ -8,8 +8,9 @@ function Welcome(){
     return(
         <div className="App">
             <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            
             <div className="d-flex justify-content-center">
+                <img src={logo} className="App-logo" alt="logo" />
                 <h1 className="App-title ">Welcome to <span id="brand">Inv€sta</span></h1>  
                 <img src={tree} alt="tree" height="120" width="130"></img>
             </div>

@@ -1,0 +1,22 @@
+.subheader {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+.container-chart {
+    height: 200px;
+}
+.row-chart {
+    
+    width: 80%;
+    margin: auto;
+}
+
+.col-chart {
+    text-align: center;
+   
+}
+.graph-title {
+    text-align: center;
+}
+
