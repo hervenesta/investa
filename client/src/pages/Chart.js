@@ -1,27 +1,26 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import { Line } from 'react-chartjs-2';
-//import {NavLink} from 'react-router-dom';
 import ChartHeader from './ChartHeader';
 import './chart.css';
 import moment from 'moment';
-//import Loading from '../components/Loading';
+import Customers from '../components/Customers';
+// import Loading from '../components/Loading';
 
-//import moment from 'moment';
-//import symbols from './symbols.json';
+// import symbols from './symbols.json';
 
-//console.log(symbols);
+// console.log(symbols);
 
 class Charts extends Component{
 
     state = {
         historicalData: [],
-        Symbol:" ",
+        Symbol:"TSLA",
         errorMessage:""
     }
 
     componentDidMount(){
-        console.log("compoentdidmount running...")
+        console.log("componentdidmount running...")
         this.getSymbol("TSLA");
     }
 
@@ -40,10 +39,11 @@ class Charts extends Component{
     }
 
     getSymbol = async (Symbol) => {
+        console.log("fetching data...")
         await fetch(`/chart/${Symbol}`)
             .then(response => response.json())
             .then(historicalData => this.setState({historicalData}))
-            .catch(e => e)
+            .catch(e => console.log(e))
         /*const response = fetch(`/chart/${Symbol}`);
         if(response.status === 404){
             this.setState({errorMessage: "Symbol Not Found"});
@@ -96,31 +96,31 @@ class Charts extends Component{
             )
         }*/
         if (this.state.historicalData) {
-        return(
-            <div  >
-                <ChartHeader title="NYSE Stock Index"/>
-                <div className="subheader">
-                    <form onClick={this.onSymbolClick}>
-                        <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={ this.onSymbolChange } />
-                        <input type="submit" value="submit" />
-                    </form>
-       
-                </div>
-                <div className="container-chart">
-                    <div className="row-chart">
-                        <div className="graph-title">
-                            <h6>{this.state.Symbol} graph over the last 30 days</h6>
-                        </div>
-                        <div className="col-chart">
-                            
-                            <Line data={this.formatChartData()} height={50} />
+            return(
+                <div>
+                    <ChartHeader title="NYSE Stock Index"/>
+                    <div className="subheader">
+                        <form onClick={this.onSymbolClick}>
+                            <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={this.onSymbolChange} />
+                            <input type="submit" value="submit" />
+                        </form>
+                        
+                    </div>
+                    <div className="container-chart">
+                        <div className="row-chart">
+                            <div className="graph-title">
+                                <h6>{this.state.Symbol} graph over the last 30 days</h6>
+                            </div>
+                            <div className="col-chart">                    
+                                <Line data={this.formatChartData()} height={50} />
+                            </div>
                         </div>
                     </div>
-                </div>
-                {this.state.errorMessage}
-            </div>
-            
-        );
+                    {this.state.errorMessage}
+                    <div></div>
+                    <Customers />
+                </div>     
+            );
         }
         return null;
     }

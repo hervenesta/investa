@@ -1,6 +1,6 @@
 .subheader {
     text-align: center;
-    width: 50%;
+    max-width: 200px;
     margin: auto;
 }
 .container-chart {
@@ -19,4 +19,5 @@
 .graph-title {
     text-align: center;
 }
+
 

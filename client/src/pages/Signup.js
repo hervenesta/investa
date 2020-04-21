@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import './signup.css';
+// import Customers from '../components/Customers';
 
 class Signup extends Component {
 
@@ -40,26 +41,27 @@ class Signup extends Component {
         <div id="InnerContainer" className=" border border-primary w-50">
       <h5 id="SignUpHeader" >New User? Sign up right here!</h5>
       <form className=" d-flex justify-content-center border border-primary " onSubmit={this.handleSubmit}>
-      <div class=" text-center justify-content-center my-4  "   >
-          <div class="form-group">
-            <label class="mr-sm-2 h2" for="uname"> Username </label><br/>
-            <input type="text" class="form-controll" name="username" id="uname" placeholder="John Smith" onChange={this.handleInputChange}></input>
+      <div className=" text-center justify-content-center my-4  "   >
+          <div className="form-group">
+            <label className="mr-sm-2 h2" for="uname"> Username </label><br/>
+            <input type="text" className="form-controll" name="username" id="uname" placeholder="John Smith" onChange={this.handleInputChange} />
           </div>
        <br/>
-          <div class="form-group ">
-            <label class="mr-sm-2 h2" for="psw"> Password </label> <br/>
-            <input type="text" class="form-controll" name="password" id="psw" placeholder="****************" onChange={this.handleInputChange}></input>
+          <div className="form-group ">
+            <label className="mr-sm-2 h2" for="psw"> Password </label> <br/>
+            <input type="text" className="form-controll" name="password" id="psw" placeholder="****************" onChange={this.handleInputChange} />
           </div>
-          <div class="form-group ">
-            <label class="mr-sm-2 h2" for="psw"> Re-enter Password </label> <br/>
-            <input type="text" class="form-controll" name="password" id="psw" placeholder="****************" onChange={this.handleInputChange}></input>
+          <div className="form-group ">
+            <label className="mr-sm-2 h2" for="psw"> Re-enter Password </label> <br/>
+            <input type="text" className="form-controll" name="password" id="psw" placeholder="****************" onChange={this.handleInputChange} />
           </div>
          
-       <button type="submit" class="btn btn-light btn-outline-light" >Sign Me Up</button>
+       <button type="submit" className="btn btn-light btn-outline-light" >Sign Me Up</button>
        <NavLink className="nav-link active" to="login">Login</NavLink>
       </div>
      </form>
      </div>
+     {/* <Customers /> */}
     </div>
 
      

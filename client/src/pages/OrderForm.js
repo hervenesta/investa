@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import './orderform.css';
+// import Customers from '../components/Customers';
 
 class OrderForm extends Component {
 
@@ -32,71 +33,79 @@ class OrderForm extends Component {
 
       axios
         .post('http://localhost:8080/order', order)
-        .then(() => console.log('Order Created'))
+        .then(response => { 
+          alert(response.data.status);
+          this.resetField();
+        })
         .catch(err => {
           console.error(err);
+          alert('An error has occured!');
+          this.resetField();
       }); 
   };
 
+  resetField = () => {
+    document.getElementById("reset-fields").reset();
+  }
+
   render() {
     return (
-      <div>
+      <div className="form-container">
         <div >
-          <form className="order-form" onSubmit={this.handleSubmit}>
-            <div  >
-              <div>
-                <label class="mr-sm-2 h2" > Position: 
-                <input
-                  type="text"
-                  className="form-control"
-                  name="position"
-                  placeholder="buy or sell"
-                  onChange={this.handleInputChange}
-                /> </label>
-              </div>
+          <form className="order-form" onSubmit={this.handleSubmit} id="reset-fields">
+            <div>
+              <label className="mr-sm-2 h2" > Position: 
+              <input
+                type="text"
+                className="form-control"
+                name="position"
+                placeholder="buy or sell"
+                onChange={this.handleInputChange}
+                required /> </label>
             </div>
             <br/>
-              <div >
-                <label class="mr-sm-2 h2" for="uname"> Symbol: 
-                <input
-                  type="text"
-                  className="form-control"
-                  name="symbol"
-                  placeholder="symbol"
-                  onChange={this.handleInputChange}
-                /> </label>
-              </div>
+            <div >
+              <label className="mr-sm-2 h2" > Symbol: 
+              <input
+                type="text"
+                className="form-control"
+                name="symbol"
+                placeholder="symbol"
+                onChange={this.handleInputChange}
+                required /> 
+              </label>
+            </div>
             <br/>
             <div >
-              <label class="mr-sm-2 h2" > Price:
+              <label className="mr-sm-2 h2" > Price:
               <input
                 type="text"
                 className="form-control"
                 name="price"
                 placeholder="price"
                 onChange={this.handleInputChange}
-              /> </label>
-              
+                required /> 
+              </label> 
             </div>
             <br />
             <div >
-              <label class="mr-sm-2 h2" > Number Of Shares:
+              <label className="mr-sm-2 h2" > Number Of Shares:
               <input
                 type="text"
                 className="form-control"
                 name="numberOfShares"
                 placeholder="number of shares"
                 onChange={this.handleInputChange}
-              /> </label>
+                required /> 
+              </label>
             </div>
             <br />
             <div >
-              <button className="btn btn-success" type="submit">
-                Place Order
-              </button>
-              <NavLink className="nav-link active" to="login">Login</NavLink>
+            <button className="btn btn-success" type="submit"> Place Order </button>
+            <NavLink className="nav-link active" to="login">Login</NavLink>
             </div>
           </form>
+          {/* <Customers /> */}
         </div>
       </div>
     );

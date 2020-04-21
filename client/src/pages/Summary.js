@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loading from '../components/Loading';
+import Customers from '../components/Customers';
 import './summary.css';
 
 class Summary extends Component {
@@ -116,6 +117,7 @@ class Summary extends Component {
                         </table>
                     </div>
                     <button onClick={() => {this.exportCsv()}}>Download csv</button>
+                    <Customers />
                 </div>
             )
 

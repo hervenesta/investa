@@ -44,7 +44,7 @@ router.use(
       let p = obj.prices[0];  
       currentPrice = (p.close).toString();
       currentPrice = Number(currentPrice);
-
+      // currentPrice = 1;
       let userid = 5;
       
       if(position === "buy"){
@@ -89,7 +89,10 @@ router.use(
     });
 
    res.json({
-     message:"tables updated"
+     status: 'Your Order has been successfully Placed'
+    //  position: position,
+    //  price: price,
+    //  shares: numberOfShares
    })
 
   })

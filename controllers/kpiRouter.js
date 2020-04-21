@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
         let financialData = obj.financialData;
         let quoteType = obj.quoteType;
 
-        res.send([{
+        res.send({
             summary: summary.longBusinessSummary,
             price:financialData.currentPrice.raw,
             ROA:financialData.returnOnAssets.fmt,
@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
             ROE: financialData.returnOnEquity.fmt,
             revenue:financialData.totalRevenue.longFmt,
             quoteType: quoteType.longName
-        }]); 
+        }); 
     });
 })
 

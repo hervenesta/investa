@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+p {
+    margin: 0.75rem 0;
+}
+
+.bg-primary {
+    background: #93cb52;
+    color: #fff;
+}
+.py-2 {
+    padding: 2rem 0;
+}
+.btn {
+    display: inline-block;
+    color: #fff;
+    background: #93cb52;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 5px;
+}
+.btn:hover {
+    background: #7ab436;
+}
+.btn-dark {
+    background: #333;
+    color: #fff;
+}
+.m-heading {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+}
+
+#contact {
+    display: flex;
+}
+#contact .map, #contact .contact-form {
+    flex: 1;
+}
+
+#contact .contact-form .form-group {
+    margin: 0.75rem;
+}
+#contact .contact-form label {
+    display: block;
+}
+#contact .contact-form input,
+#contact .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+}

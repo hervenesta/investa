@@ -1,31 +1,48 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 100px;
-    padding-top: 20px;
-  }
-  
-  .App-header {
-    background-image: url('nyse.jpg');
-    background-position: center;
-    background-color: #282c34;
-    height: 185px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #09d3ac;
-  }
-  h1 {
-    color: crimson;
-    text-shadow: 5px 5px 7px #000000 ;
-  }
- 
-  
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Utility cLASSES */
+#navbar h5 span i {
+  color: #93cb52;
+  padding-left: 1rem;
+}
+/* Navbar */
+#navbar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: #fff;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 0.25rem;
+}
+/* #icon {
+  display: flex;
+  align-items: center;
+}
+#icon i {
+  background-color: #93cb52;
+  padding-right: 0.25rem;
+} */
+
+#navbar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+#navbar ul li .color-white {
+  color: #fff;
+  padding: 0.75rem;
+  margin: 0 0.25rem;
+}
+#navbar ul li:hover {
+  background: #c9b299;
+  border-radius: 5px;
+}

@@ -25,17 +25,15 @@ class Nyse extends Component {
         }
         return(
             <div className="wrapper">
-                <div className="  my-2" >
-                    <h5 className="  text-center">New York Stock Exchange Companies</h5>
+                <h5 className="text-center">New York Stock Exchange Companies</h5>
+                {/* <div className="my-2" >
                     <div className="wrap d-flex justify-content-right">
                         <div className="search">
                             <input type="text" className="searchTerm" name="term" placeholder="Enter Stock here?"/>
-                            <button type="submit" className="searchButton">
-                            <i className="fa fa-search"></i>
-                            </button>
+                            <button type="submit" className="searchButton">submit</button>
                         </div>
                     </div>
-                </div >
+                </div > */}
                 <div className="stockList">
                     {this.state.symbols.map( symbol => 
                     <div className="border-0 collection">

@@ -1,0 +1,11 @@
+.items {
+    display: flex;
+    max-width: 1100px;
+    margin: auto;
+}
+.items img {
+    width: 250px;
+    height: 250px;
+    padding: 3rem;
+    /* margin: 2rem 2rem; */
+}

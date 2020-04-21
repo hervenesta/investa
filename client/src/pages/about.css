@@ -4,7 +4,7 @@
   color: rgba(146,155, 8, 1);
   background-color:#292c33;
 }
-​
+/* ​
 #teamP{
   background-color:#292c33;
 }
@@ -24,4 +24,40 @@
 
 #bla{
   color:black;
+} */
+p {
+  margin: 0.75rem 0;
+}
+#who {
+  display: flex;
+}
+#who div {
+  flex: 1;
+}
+#who .who-img {
+  background: url('./groupPic.jpg') no-repeat center center/cover;
+}
+.bg-dark {
+  background: #333;
+  color: #fff;
+}
+.p-2 {
+  padding: 2rem;
+}
+.m-heading {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+.text-primary {
+  color: #93cb52;
+}
+.list {
+  margin: 0.5rem 0;
+  list-style: none;
+}
+.list li {
+  padding: 0.5rem 0;
+  border-bottom: #444 dotted 1px;
+  font-size: 20px;
 }

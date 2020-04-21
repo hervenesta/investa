@@ -1,0 +1,11 @@
+#title-form {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+#news {
+    margin: 20px;
+    padding: 20px;
+}

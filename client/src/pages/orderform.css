@@ -1,3 +1,9 @@
+.form-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    
+}
 .order-form {
     text-align: center;
 }

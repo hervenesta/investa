@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+
+// add http request logging to help us debug and audit app use
+const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
+app.use(morgan(logFormat));
 
 const chartsRouter = require('./controllers/chartsRouter');
 const nyseRouter = require('./controllers/nyseRouter');

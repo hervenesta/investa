@@ -1,0 +1,90 @@
+[
+    {
+        "company": "JP Morgan",
+        "symbol": "JPM"
+    },
+    {
+        "company": "Visa Inc",
+        "symbol": "V"
+    },
+    {
+        "company": "Johnson & Johnson",
+        "symbol": "JNJ"
+    },
+    {
+        "company": "Walmart Inc",
+        "symbol": "WMT"
+    },
+    {
+        "company": "Exxon Mobil Corporation",
+        "symbol": "XOM"
+    },
+    {
+        "company": "Bank of America Corp",
+        "symbol": "BAC"
+    },
+    {
+        "company": " Procter & Gamble Co",
+        "symbol": "PG"
+    },
+    {
+        "company": "AT&T Inc",
+        "symbol": "T"
+    },
+    {
+        "company": "Taiwan Semiconductor Mfg.",
+        "symbol": "TSM"
+    },
+    {
+        "company": "Mastercard Inc",
+        "symbol": "MA"
+    },
+    {
+        "company": "Home Depot Inc",
+        "symbol": "HD"
+    },
+    {
+        "company": "Walt Disney Co",
+        "symbol": "DIS"
+    },
+    {
+        "company": "Verizon Communications Inc",
+        "symbol": "VZ"
+    },
+    {
+        "company": "Coca-Cola Co",
+        "symbol": "KO"
+    },
+    {
+        "company": "Toyota Motor Corp",
+        "symbol": "TM"
+    },
+    {
+        "company": "Boeing Co",
+        "symbol": "BA"
+    },
+    {
+        "company": "Oracle Corporation",
+        "symbol": "ORCL"
+    },
+    {
+        "company": "China Mobile Ltd",
+        "symbol": "CHL"
+    },
+    {
+        "company": "Citigroup Inc",
+        "symbol": "C"
+    },
+    {
+        "company": "Mcdonald's Corp",
+        "symbol": "MCD"
+    },
+    {
+        "company": "Nike Inc",
+        "symbol": "NKE"
+    },
+    {
+        "company": "salesforce.com, inc",
+        "symbol": "CRM"
+    }
+]
