@@ -2,3 +2,10 @@ h5 {
     color: blue;
     text-align: center;
 }
+.btn-pg {
+    margin: 10px;
+    background: #6dc92f;
+}
+.btn-pg:hover {
+    color: #333;
+}

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import axios from 'axios';
+import fire from '../config/fire';
+// import axios from 'axios';
 
 class Login extends Component {
 
   state = {
-    username:"",
+    email:"",
     password:""
   };
 
@@ -18,19 +19,26 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { email, password } = this.state;
 
-    const credentials = {
-      username,
-      password
-    };
+    // const credentials = {
+    //   email,
+    //   password
+    // };
+    fire.auth().signInWithEmailAndPassword(email, password)
+      .then((u) => {
+          console.log("Successfully Logged In");
+      })
+      .catch((err) => {
+          console.log("Error:" + err.toString());
+    })
 
-      axios
-        .post('http://localhost:8080/login', credentials)
-        .then(() => console.log('credentials Created'))
-        .catch(err => {
-          console.error(err);
-      }); 
+      // axios
+      //   .post('http://localhost:8080/login', credentials)
+      //   .then(() => console.log('credentials Created'))
+      //   .catch(err => {
+      //     console.error(err);
+      // }); 
   };
 
   render(){
@@ -40,15 +48,15 @@ class Login extends Component {
             <form className="d-flex justify-content-center">
               <div className="form  text-center  my-4 " >
                 <div >
-                  <label className="mr-sm-2 h2" for="uname"> Username </label><br/>
-                  <input type="text" className="form-controll" id="uname" placeholder="Enter Username"/>
+                  <label className="mr-sm-2 h2"> Email </label><br/>
+                  <input type="text" className="form-controll" name="email" placeholder="Enter email" onChange={this.handleChange}/>
                 </div>
                 <br/>
                 <div >
                   <label className="mr-sm-2 h2" for="psw"> Password </label><br/>
-                  <input type="text" className="form-controll" id="psw" placeholder="Password"/>
+                  <input type="text" className="form-controll" name="password" placeholder="Password" onChange={this.handleChange}/>
                 </div>
-                <button type="submit" className="btn btn-dark px-2 ">Take Me In</button>
+                <button type="submit" className="btn btn-dark px-2 btn-pg">Take Me In</button>
                 <NavLink className="nav-link active" to="signup">Sign up</NavLink>
               </div>
             </form>

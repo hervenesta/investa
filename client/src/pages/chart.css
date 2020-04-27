@@ -12,12 +12,15 @@
     margin: auto;
 }
 
-.col-chart {
+.col-chart{
     text-align: center;
-   
+    background:#333;
 }
 .graph-title {
     text-align: center;
 }
-
+.customer-space {
+    margin: 30px;
+    height: 180px;
+}
 

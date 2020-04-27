@@ -29,11 +29,11 @@ router.use(
   })
 */
   router.post('/', async (req, res) => {
-    let { username, password} = req.body;
+    let { email, password} = req.body;
     try {
       const hashedPaasword = await bcrypt.hash(password, 10);
       User.create({
-        username,
+        email,
         password: hashedPaasword
       }).then(() => {
         res.json({message: 'User inserted'})

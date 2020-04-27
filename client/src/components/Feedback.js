@@ -6,6 +6,7 @@ import person2 from './img/person-2.jpg';
 function Feedback(){
     return(
         <div id="testimonials" class="py-3">
+            <div className="space"></div>
             <h2 className="l-heading">What People Say</h2>
             <div className="feedback">
                 <div className="testimonial">

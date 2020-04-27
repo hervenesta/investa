@@ -9,7 +9,8 @@ class Stockinfos extends Component {
 
     state = {
         symbol: " ",
-        data: [],
+        Data: [],
+        Header:[{'Current Stock Price':0,'Return on Equity':0,'Return on Asset':0,'Revenue':0}]
     }
     componentDidMount() {
         this.getData("JPM");
@@ -27,16 +28,44 @@ class Stockinfos extends Component {
     getData = async (symbol) => {
         await fetch(`/nyse/kpi/${symbol}`)
             .then(response => response.json())
-            .then(data => this.setState({data}, () => console.log(data)))
+            .then(Data => this.setState({
+                Data:Data
+            }, () => console.log(Data)))
     }
+    renderTableHeader() {
+        let header = Object.keys(this.state.Header[0])
+        return header.map((key, index) => {
+           return <th key={index}>{key.toUpperCase()}</th>
+        })
+     }
+     renderTableData() {
+        return this.state.Data.map((t, index) => {
+           return (
+              <tr key={index}>
+                    <td>${t.price}</td>
+                    <td>{t.ROE}</td>
+                    <td>{t.ROA}</td>
+                    <td>${t.revenue}</td>
+              </tr>
+           )
+        })
+     }
 
     render() {
     //    if(this.state.loading){
     //        return <Loading />
     //    }
+    const s = this.state.Data;
+    const summary = s.map(data => (
+        data.summary
+    ))
+    const quoteType = s.map(data => (
+        data.quoteType  
+    ))
+
         return (
             <div id="news">
-                <h3>Learn about a company before investing</h3>
+                <h3>Learn more about your company </h3>
                 <div id="title-form">
                     <form onSubmit={this.handleSubmit}>
                         <span>Select stock: </span>
@@ -47,17 +76,25 @@ class Stockinfos extends Component {
                         </select>
                         <button type="submit" value="Submit"> submit</button>
                     </form>
-                    <h2>Company name: {this.state.data.quoteType}</h2>
                 </div>
-                <p>{this.state.data.summary}</p>
                 <div>
-                    <ul>
-                        <li>Current Stock Price: ${this.state.data.price}</li>
-                        <li>Return on Equity: {this.state.data.ROE}</li>
-                        <li>Return on Asset: {this.state.data.ROA}</li>
-                        <li>Revenue: ${this.state.data.revenue}</li>
-                    </ul>
+                    <div className="w3-card-4">
+                        <h3 id='title'>Key Performance Indicators</h3>
+                        <table id='transaction'>
+                        <tbody>
+                            <tr>{this.renderTableHeader()}</tr>
+                            {this.renderTableData()}
+                        </tbody>
+                        </table>
+                    </div>
                 </div>
+                <div className="space"></div>
+                <div className="w3-card-4 ">
+                    <p className="card-mg">{summary[0]}</p>
+                    <div className="w3-container w3-center">
+                        <p>{quoteType[0]}</p>
+                    </div>
+                </div>                
             </div>
         );
     }

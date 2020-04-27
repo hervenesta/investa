@@ -1,0 +1,11 @@
+[
+    {
+        "position":"select"
+    },
+    {
+        "position": "buy"
+    },
+    {
+        "position": "sell"
+    }
+]

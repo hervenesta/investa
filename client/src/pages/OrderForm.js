@@ -2,23 +2,38 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import './orderform.css';
+import position from './position.json';
+import stocks from '../components/stocks.json';
 // import Customers from '../components/Customers';
 
 class OrderForm extends Component {
 
     state = {
+      position:" ",
       symbol: " ",
       price: 1.0,
-      numberOfShares: 0,
-      position:''
+      numberOfShares: 0
     }
 
   handleInputChange = e => {
+    e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-
+  handleSymbolChange = e => {
+    e.preventDefault();
+    this.setState({
+      symbol:e.target.value
+    })
+  }
+  handlePositionChange = e => {
+    e.preventDefault();
+    this.setState({
+      position:e.target.value
+    })
+  }
+  
   handleSubmit = e => {
     e.preventDefault();
 
@@ -30,7 +45,7 @@ class OrderForm extends Component {
       numberOfShares,
       position
     };
-
+    console.log(order);
       axios
         .post('http://localhost:8080/order', order)
         .then(response => { 
@@ -54,30 +69,39 @@ class OrderForm extends Component {
         <div >
           <form className="order-form" onSubmit={this.handleSubmit} id="reset-fields">
             <div>
-              <label className="mr-sm-2 h2" > Position: 
-              <input
+              <label className="mr-sm-2 h2" > Position: </label>
+              {/* <input
                 type="text"
                 className="form-control"
                 name="position"
                 placeholder="buy or sell"
                 onChange={this.handleInputChange}
-                required /> </label>
+                required />  */}
+              <select value={this.state.position} onChange={this.handlePositionChange}>
+                {position.map((obj, index) =>
+                  <option key={`${index}-${obj.position}`} value={obj.position}>{obj.position}</option>
+                  )}
+              </select>
             </div>
             <br/>
             <div >
-              <label className="mr-sm-2 h2" > Symbol: 
-              <input
+              <label className="mr-sm-2 h2" > Company: </label>
+              {/* <input
                 type="text"
                 className="form-control"
                 name="symbol"
                 placeholder="symbol"
                 onChange={this.handleInputChange}
-                required /> 
-              </label>
+                required />  */}
+              <select value={this.state.symbol} onChange={this.handleSymbolChange}>
+                {stocks.map((obj, index) =>
+                  <option key={`${index}-${obj.company}`} value={obj.symbol}>{obj.company}</option>
+                  )}
+              </select>
             </div>
             <br/>
             <div >
-              <label className="mr-sm-2 h2" > Price:
+              <label className="mr-sm-2 h2" > Price
               <input
                 type="text"
                 className="form-control"
@@ -89,7 +113,7 @@ class OrderForm extends Component {
             </div>
             <br />
             <div >
-              <label className="mr-sm-2 h2" > Number Of Shares:
+              <label className="mr-sm-2 h2" > Number Of Shares
               <input
                 type="text"
                 className="form-control"

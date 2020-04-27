@@ -4,7 +4,8 @@ import { Line } from 'react-chartjs-2';
 import ChartHeader from './ChartHeader';
 import './chart.css';
 import moment from 'moment';
-import Customers from '../components/Customers';
+// import Customers from '../components/Customers';
+import stocks from '../components/stocks.json';
 // import Loading from '../components/Loading';
 
 // import symbols from './symbols.json';
@@ -15,13 +16,13 @@ class Charts extends Component{
 
     state = {
         historicalData: [],
-        Symbol:"TSLA",
+        Symbol:"JPM",
         errorMessage:""
     }
 
     componentDidMount(){
         console.log("componentdidmount running...")
-        this.getSymbol("TSLA");
+        this.getSymbol("JPM");
     }
 
     onSymbolChange = event => {
@@ -101,7 +102,12 @@ class Charts extends Component{
                     <ChartHeader title="NYSE Stock Index"/>
                     <div className="subheader">
                         <form onClick={this.onSymbolClick}>
-                            <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={this.onSymbolChange} />
+                            {/* <input type="text" placeholder="Enter a stock symbol" value={this.state.Symbol} onChange={this.onSymbolChange} /> */}
+                            <select value={this.state.Symbol} onChange={this.onSymbolChange}>
+                                {stocks.map((obj, index) =>
+                                    <option key={`${index}-${obj.company}`} value={obj.symbol}>{obj.company}</option>
+                                    )}
+                            </select>
                             <input type="submit" value="submit" />
                         </form>
                         
@@ -112,13 +118,15 @@ class Charts extends Component{
                                 <h6>{this.state.Symbol} graph over the last 30 days</h6>
                             </div>
                             <div className="col-chart">                    
-                                <Line data={this.formatChartData()} height={50} />
+                                <Line data={this.formatChartData()} height={100} />
                             </div>
                         </div>
                     </div>
                     {this.state.errorMessage}
-                    <div></div>
-                    <Customers />
+                    {/* <div className="customer-space">
+                        <Customers />
+                    </div> */}
+                    <div className="customer-space"></div>
                 </div>     
             );
         }

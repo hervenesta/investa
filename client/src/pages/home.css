@@ -27,7 +27,7 @@ p {
 
 /* Showcase */
 #showcase {
-    background: #333 url('./nyse.jpg') no-repeat center center/cover;
+    background:#333 url('./nyse.jpg') no-repeat center center/cover;
     height: 100vh;
     color: #fff;
   }
@@ -41,7 +41,7 @@ p {
     height: 100%;
     padding: 0 2rem;
     /* Overlay */
-    position: absolute;
+    /* position: absolute; */
     top: 65px;
     left: 0;
     bottom: 0;

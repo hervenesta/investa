@@ -42,10 +42,10 @@ router.use(
       let json = body;
       let obj = JSON.parse(json);
       let p = obj.prices[0];  
-      currentPrice = (p.close).toString();
-      currentPrice = Number(currentPrice);
-      // currentPrice = 1;
-      let userid = 5;
+      // currentPrice = (p.close).toString();
+      // currentPrice = Number(currentPrice);
+      currentPrice = 1;
+      let userid = 2;
       
       if(position === "buy"){
         Transaction.create({
@@ -61,6 +61,9 @@ router.use(
               user.decrement({balance:t.dataValues.total}),
               user.increment({totalNumberOfShares:numberOfShares})
               )
+          })
+          res.json({
+            status: `Your have successfully bought ${numberOfShares} shares of ${symbol}`
           })
           console.log(t.dataValues)
         })
@@ -81,19 +84,15 @@ router.use(
                   user.decrement({totalNumberOfShares:numberOfShares})
                   )
               })
+              res.json({
+                status: `You have successfully sold ${numberOfShares} shares of ${symbol}`
+              })
               console.log(t.dataValues)
             })
               .catch(e => console.log(e));
           
         } 
     });
-
-   res.json({
-     status: 'Your Order has been successfully Placed'
-    //  position: position,
-    //  price: price,
-    //  shares: numberOfShares
-   })
 
   })
   

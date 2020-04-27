@@ -4,7 +4,7 @@ const {Transaction, User} = require('../models');
 const Sequelize = require('sequelize');
 
 router.get('/', (req,res) => {
-    let userid = 5;
+    let userid = 2;
     Transaction.findAll({
         attributes: { exclude: ['stockSymbol', 'transactiontypeId']} ,
         include:[{model: User, attributes: { exclude: ['password']},

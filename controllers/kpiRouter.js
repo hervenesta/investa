@@ -26,15 +26,24 @@ router.get('/:id', (req, res) => {
         let financialData = obj.financialData;
         let quoteType = obj.quoteType;
 
-        res.send({
-            summary: summary.longBusinessSummary,
+        // const kpi = {
+        //     price:financialData.currentPrice.raw,
+        //     ROA:financialData.returnOnAssets.fmt,
+        //     DTE:financialData.debtToEquity.fmt,
+        //     ROE: financialData.returnOnEquity.fmt,
+        //     revenue:financialData.totalRevenue.longFmt,
+        //     quoteType: quoteType.longName,
+        // }
+     
+        res.send([{
             price:financialData.currentPrice.raw,
             ROA:financialData.returnOnAssets.fmt,
             DTE:financialData.debtToEquity.fmt,
             ROE: financialData.returnOnEquity.fmt,
             revenue:financialData.totalRevenue.longFmt,
-            quoteType: quoteType.longName
-        }); 
+            quoteType: quoteType.longName,
+            summary:summary.longBusinessSummary
+        }]); 
     });
 })
 

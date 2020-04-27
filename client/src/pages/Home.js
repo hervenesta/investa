@@ -2,6 +2,7 @@ import React from 'react';
 import './home.css';
 import Contact from '../components/Contact';
 import Customers from '../components/Customers';
+// import Footer from '../components/Footer';
 import {Link} from 'react-router-dom';
 
 function Home(){

@@ -5,17 +5,28 @@ import Loading from '../components/Loading';
 class Nyse extends Component {
     state = {
         symbols:[],
+        allData: [],
         loading: true
     }
 
     componentDidMount(){
         this.getSymbols();
     }
+    handleChange = e => {
+        const symbols = this.state.allData.filter(item =>
+			item.CompanyName.toLowerCase().includes(e.target.value.toLowerCase())
+		);
+		this.setState({ symbols, loading: false });
+    }
 
     getSymbols = () => {
         fetch('/nyse')
             .then(response => response.json())
-            .then(symbols => this.setState({symbols, loading: false}, () => console.log(symbols)))
+            .then(symbols => this.setState({
+                symbols:symbols,
+                allData: symbols, 
+                loading: false
+            }, () => console.log(symbols)))
             .catch(e => e)
     }
 
@@ -26,14 +37,21 @@ class Nyse extends Component {
         return(
             <div className="wrapper">
                 <h5 className="text-center">New York Stock Exchange Companies</h5>
-                {/* <div className="my-2" >
-                    <div className="wrap d-flex justify-content-right">
-                        <div className="search">
-                            <input type="text" className="searchTerm" name="term" placeholder="Enter Stock here?"/>
-                            <button type="submit" className="searchButton">submit</button>
-                        </div>
-                    </div>
-                </div > */}
+                <div className="search-outer">
+                    <form className="searchform">
+                        {/* input field activates onKeyUp function on state change */}
+                        <input
+                            type="search"
+                            onChange={this.handleChange}
+                            name="s"
+                            id="s"
+                            placeholder="Search"
+                        />
+                        <button type="submit" id="searchsubmit">
+                            <i className="fa fa-search" aria-hidden="true" />
+                        </button>
+                    </form>
+                </div>
                 <div className="stockList">
                     {this.state.symbols.map( symbol => 
                     <div className="border-0 collection">

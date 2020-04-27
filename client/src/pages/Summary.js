@@ -81,7 +81,7 @@ class Summary extends Component {
         let temp = t.map((user) => {
             return {
                 id: user.user.id,
-                username: user.user.username,
+                email: user.user.email,
                 totalNumberOfShares: user.user.totalNumberOfShares,
                 balance: user.user.balance,
                 createdAt: user.user.createdAt
@@ -95,7 +95,7 @@ class Summary extends Component {
             return(
                 <div >
                     <div>
-                        <h3 id="title">{temp[0].username}'s orders</h3>
+                        <h3 id="title">{temp[0].email}'s orders</h3>
                     </div>
                     <div>
                         <table id='transaction'>
